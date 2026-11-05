@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Eficiência Máxima - Manybonks Warrior Prot | WoW Forever</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --card: #1a2332;
+  --accent: #c9a227;
+  --accent2: #4a90e2;
+  --text: #e8e6e3;
+  --muted: #8b9bb4;
+  --done: #3d8b40;
+  --border: #2a3a50;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1a2332 0%, #0f1c2e 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+}
+h1 {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+}
+.subtitle { color: var(--muted); font-size: 1.1rem; }
+.progress-container {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+}
+.progress-bar {
+  height: 24px;
+  background: #2a3a50;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  width: 0%;
+  transition: width 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+.section {
+  background: var(--card);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.section-header {
+  background: #151e2b;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+.section-header:hover { background: #1c2838; }
+.section-content { padding: 20px; display: none; }
+.section.open .section-content { display: block; }
+.task {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #2a3a50;
+  gap: 12px;
+}
+.task:last-child { border-bottom: none; }
+.task input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.task label {
+  cursor: pointer;
+  flex: 1;
+}
+.task.completed label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.task-level {
+  background: var(--accent2);
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.tip {
+  background: #1e2a3a;
+  padding: 12px 16px;
+  border-left: 4px solid var(--accent);
+  margin: 15px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.stat-card {
+  background: #151e2b;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-number { font-size: 2rem; color: var(--accent); font-weight: bold; }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+button.reset {
+  background: #8b3a3a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button.reset:hover { background: #a04545; }
+footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  body { padding: 10px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚔️ Plano de Eficiência Máxima</h1>
+  <p class="subtitle">Manybonks Forgehand • High Order Skyborne Warrior • Protection</p>
+  <p class="subtitle">WoW Forever • Alliance • Mining + Blacksmithing</p>
+  <p style="margin-top:15px; color:#8b9bb4;">Nível atual detectado: ~11 • Item Level 5</p>
+</header>
+
+<div class="progress-container">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <strong>Progresso do Plano</strong>
+    <span id="progress-text">0 / 0 tasks</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill">0%</div>
+  </div>
+  <button class="reset" onclick="resetAll()">Resetar Progresso</button>
+</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-number">Prot</div>
+    <div class="stat-label">Spec Recomendada</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">Mining+BS</div>
+    <div class="stat-label">Profissões Ideais</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">40</div>
+    <div class="stat-label">Mount Target</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">Thrill</div>
+    <div class="stat-label">1º Legacy Point</div>
+  </div>
+</div>
+
+<!-- SEÇÃO 1: IMEDIATO (Nível 11-16) -->
+<div class="section open">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>1. Ações Imediatas (Nível 11 → 16)</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="tip">
+      <strong>Prioridade máxima agora:</strong> Continuar Protection. Shield Block no 16 muda o jogo. Até lá, jogue seguro com 2-3 mobs.
+    </div>
+
+    <div class="task">
+      <input type="checkbox" id="t1" onchange="updateProgress()">
+      <label for="t1"><span class="task-level">NOW</span> Confirmar que os 2 talentos já gastos estão em <strong>Shield Specialization</strong>. Se não, planejar o reset no 16.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t2" onchange="updateProgress()">
+      <label for="t2"><span class="task-level">NOW</span> Priorizar <strong>First Aid</strong> — bandage é o heal mais barato. Upar até o máximo possível agora.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t3" onchange="updateProgress()">
+      <label for="t3"><span class="task-level">NOW</span> Continuar Mining + Blacksmithing. Mine tudo que ver no caminho. Craft Rough Sharpening Stones.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t4" onchange="updateProgress()">
+      <label for="t4"><span class="task-level">NOW</span> Montar acampamento (Camping) sempre que possível. Colocar Sharpening Wheel (Str) + First Aid Kit (Stam).</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t5" onchange="updateProgress()">
+      <label for="t5"><span class="task-level">11-16</span> Usar arma 2H se o dano estiver baixo, mas preparar 1H + Shield bom para o nível 16.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t6" onchange="updateProgress()">
+      <label for="t6"><span class="task-level">11-16</span> Não puxar mais de 2-3 mobs do mesmo level. Evitar packs grandes sem gear.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t7" onchange="updateProgress()">
+      <label for="t7"><span class="task-level">DAILY</span> Sempre logar fora em inn ou zona de rested XP. Comida Well Fed (+5% XP) sempre ativa.</label>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 2: TALENTOS -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>2. Árvore de Talentos Protection (Ordem Ideal)</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="tip">A partir do nível 16 com Shield Block, Protection é o spec mais eficiente para leveling solo no Forever.</div>
+
+    <div class="task">
+      <input type="checkbox" id="t8" onchange="updateProgress()">
+      <label for="t8"><span class="task-level">10-16</span> 5/5 <strong>Shield Specialization</strong> (rage no block)</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t9" onchange="updateProgress()">
+      <label for="t9"><span class="task-level">16+</span> 3/3 <strong>Improved Revenge</strong></label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t10" onchange="updateProgress()">
+      <label for="t10"><span class="task-level">18+</span> <strong>Master of Defense</strong> + Improved Thunder Clap</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t11" onchange="updateProgress()">
+      <label for="t11"><span class="task-level">20+</span> Defiance (se for tankar dungeons) ou focar em dano</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t12" onchange="updateProgress()">
+      <label for="t12"><span class="task-level">40</span> Dual Spec desbloqueia — manter Arms/Fury como backup se quiser.</label>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 3: ROTAÇÃO -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>3. Rotação e Gameplay (Eficiência Máxima)</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="task">
+      <input type="checkbox" id="t13" onchange="updateProgress()">
+      <label for="t13"><strong>Abertura:</strong> Charge → (Stance swap se necessário) → Shield Block → Revenge no cooldown</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t14" onchange="updateProgress()">
+      <label for="t14">Rend em alvos que demoram mais de 4-5 segundos</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t15" onchange="updateProgress()">
+      <label for="t15">Thunder Clap + Demoralizing Shout em packs de 2+</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t16" onchange="updateProgress()">
+      <label for="t16">Heroic Strike / Cleave <strong>apenas</strong> com rage sobrando (não gaste tudo)</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t17" onchange="updateProgress()">
+      <label for="t17"><span class="task-level">20+</span> <strong>Victory Rush</strong> após cada kill (cura 10% HP, 30s CD)</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t18" onchange="updateProgress()">
+      <label for="t18">Guardar rage entre pulls. Não use Execute cedo.</label>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 4: PROFISSÕES + CAMPING + LEGACY -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>4. Profissões, Camping e Legacy Points</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="tip">
+      Mining + Blacksmithing é a combinação #1 para Warrior no Forever. Sentinel’s set (Prot) é BoP e muito forte.
+    </div>
+
+    <div class="task">
+      <input type="checkbox" id="t19" onchange="updateProgress()">
+      <label for="t19">Mining: pegar todos os veios no caminho. Lodestone no camp = melee AP.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t20" onchange="updateProgress()">
+      <label for="t20">Blacksmithing: craftar upgrades de plate + Sharpening Stones. Focar em Sentinel’s mais tarde.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t21" onchange="updateProgress()">
+      <label for="t21">First Aid: manter no máximo. Bandage entre pulls.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t22" onchange="updateProgress()">
+      <label for="t22">Cooking: comida de XP (Well Fed) sempre. Buff de 5% kill XP é enorme.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t23" onchange="updateProgress()">
+      <label for="t23"><span class="task-level">25</span> Primeiro Legacy Point → <strong>Thrill of Adventure</strong> (heal on kill). Reduz downtime drasticamente.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t24" onchange="updateProgress()">
+      <label for="t24">Camping: sempre sentar 1 minuto. Buffs duram 1 hora. Sharpening Wheel + First Aid Kit prioridade.</label>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 5: GEAR + DUNGEONS + GOLD -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>5. Gear, Dungeons e Economia</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="task">
+      <input type="checkbox" id="t25" onchange="updateProgress()">
+      <label for="t25">Priorizar <strong>escudo bom</strong> e armadura plate sobre arma 1H perfeita.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t26" onchange="updateProgress()">
+      <label for="t26"><span class="task-level">16-23</span> Fazer Deadmines (Alliance) quando tiver as quests. Drops de arma e XP de quest são excelentes.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t27" onchange="updateProgress()">
+      <label for="t27"><span class="task-level">23-30</span> Stockade ou Shadowfang Keep conforme disponibilidade de grupo.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t28" onchange="updateProgress()">
+      <label for="t28"><span class="task-level">30+</span> Scarlet Monastery é o melhor dungeon para o range.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t29" onchange="updateProgress()">
+      <label for="t29">Economia: vender greys, colocar minérios no AH, treinar apenas spells que usa. Meta: ~90g no 40 para mount + riding.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t30" onchange="updateProgress()">
+      <label for="t30">Quest rewards de dungeon geralmente dão as melhores armas early. Sempre pegar as quests antes de entrar.</label>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 6: HÁBITOS DIÁRIOS DE EFICIÊNCIA -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>6. Hábitos Diários de Eficiência Máxima</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="task">
+      <input type="checkbox" id="t31" onchange="updateProgress()">
+      <label for="t31">Logar sempre em zona de rested (inn). 5% bonus XP a cada 8h offline.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t32" onchange="updateProgress()">
+      <label for="t32">Comida Well Fed ativa 100% do tempo de combate.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t33" onchange="updateProgress()">
+      <label for="t33">Minimizar travel time: usar Hearthstone estrategicamente, pegar flight paths, matar no caminho.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t34" onchange="updateProgress()">
+      <label for="t34">Não ficar parado no AH ou em cidade sem necessidade. Tempo = XP.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t35" onchange="updateProgress()">
+      <label for="t35">Grupo com healer quando possível — Warrior ainda tem algum downtime solo.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="t36" onchange="updateProgress()">
+      <label for="t36">Skyborne racials estão ok. Não se preocupe em trocar raça.</label>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Plano criado com base na conversa compartilhada e nas melhores práticas de WoW Forever.<br>
+  Progresso salvo automaticamente no navegador. Atualize conforme o level sobe.<br>
+  <strong>For the Alliance!</strong>
+</footer>
+
+<script>
+function toggleSection(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const arrow = header.querySelector('span:last-child');
+  arrow.textContent = section.classList.contains('open') ? '▼' : '▶';
+}
+
+function updateProgress() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let completed = 0;
+  checkboxes.forEach(cb => {
+    const task = cb.closest('.task');
+    if (cb.checked) {
+      completed++;
+      task.classList.add('completed');
+    } else {
+      task.classList.remove('completed');
+    }
+    localStorage.setItem(cb.id, cb.checked);
+  });
+  const total = checkboxes.length;
+  const percent = total ? Math.round((completed / total) * 100) : 0;
+  document.getElementById('progress-fill').style.width = percent + '%';
+  document.getElementById('progress-fill').textContent = percent + '%';
+  document.getElementById('progress-text').textContent = completed + ' / ' + total + ' tasks';
+}
+
+function loadProgress() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(cb => {
+    const saved = localStorage.getItem(cb.id);
+    if (saved === 'true') {
+      cb.checked = true;
+    }
+  });
+  updateProgress();
+}
+
+function resetAll() {
+  if (confirm('Resetar todo o progresso?')) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+      localStorage.removeItem(cb.id);
+    });
+    updateProgress();
+  }
+}
+
+// Load on start
+document.addEventListener('DOMContentLoaded', loadProgress);
+</script>
+</body>
+</html>
