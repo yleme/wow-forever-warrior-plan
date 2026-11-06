@@ -172,7 +172,7 @@ footer {
   <h1>⚔️ Plano de Eficiência Máxima</h1>
   <p class="subtitle">Manybonks Forgehand • High Order Skyborne Warrior • Protection</p>
   <p class="subtitle">WoW Forever • Alliance • Mining + Blacksmithing</p>
-  <p style="margin-top:15px; color:#8b9bb4;">Nível atual detectado: ~11 • Item Level 5</p>
+  <p style="margin-top:15px; color:#8b9bb4;">Armory 5 nov 2026, 17:49 · Nível 16 · Item level 7 · Protection · 7 pontos</p>
 </header>
 
 <div class="progress-container">
@@ -205,6 +205,43 @@ footer {
   </div>
 </div>
 
+
+<div class="section open">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>0. Ficha do armory (nível 16)</span>
+    <span>▼</span>
+  </div>
+  <div class="section-content">
+    <div class="tip">
+      <strong>Lido em 5 de novembro, 17:49.</strong> Protection com 7 pontos: 5/5 Shield Specialization e 2/3 Improved Revenge. 441 de vida, 49 de força, 47 de stamina, 132 de attack power, 10% de block. O item level 7 é slot vazio, não peça ruim.
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-holes" onchange="updateProgress()">
+      <label for="ficha-holes"><span class="task-level">VAZIO</span> Elmo, pescoço, ombros, segundo anel e os dois berloques. Qualquer verde aqui sobe mais que trocar a bota azul.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-weapon" onchange="updateProgress()">
+      <label for="ficha-weapon"><span class="task-level">ARMA</span> Haggard's Hammer está em 7,6 dps (12–23, velocidade 2,30, +1 Stam). É o buraco de dano. Escudo: Stormforged Protector, ilvl 14.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-cloak" onchange="updateProgress()">
+      <label for="ficha-cloak"><span class="task-level">CAPA</span> Worn Hide Cloak é cinza e sem atributo. Punhos: Scuffed Cuffs, ilvl 11, só +1 de força.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-keep" onchange="updateProgress()">
+      <label for="ficha-keep"><span class="task-level">FICA</span> Gemmed Copper Boots (azul, +4 For +4 Stam), Soldier's Girdle of Power (+6 AP), Peacekeeper's Mail, Breaker's Gauntlets, Elite Peacekeeper's Leggings, Harvester's Pestslayer. Ancient Heirloom não tem stat: não venda.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-prof" onchange="updateProgress()">
+      <label for="ficha-prof"><span class="task-level">OFÍCIO</span> Mining 72/150 · Blacksmithing 37/75 · First Aid 56/75 (treinar journeyman) · Cooking 31/75 · Fishing 30/75.</label>
+    </div>
+    <div class="task">
+      <input type="checkbox" id="ficha-next" onchange="updateProgress()">
+      <label for="ficha-next"><span class="task-level">AGORA</span> O próximo talento fecha Improved Revenge. Shield Block já abriu. Deadmines com as quests na bolsa é a troca da arma.</label>
+    </div>
+  </div>
+</div>
+
 <!-- SEÇÃO 1: IMEDIATO (Nível 11-16) -->
 <div class="section open">
   <div class="section-header" onclick="toggleSection(this)">
@@ -217,12 +254,12 @@ footer {
     </div>
 
     <div class="task">
-      <input type="checkbox" id="t1" onchange="updateProgress()">
-      <label for="t1"><span class="task-level">NOW</span> Confirmar que os 2 talentos já gastos estão em <strong>Shield Specialization</strong>. Se não, planejar o reset no 16.</label>
+      <input type="checkbox" id="t1" onchange="updateProgress()" checked>
+      <label for="t1"><span class="task-level">NOW</span> Feito. Armory: <strong>5/5 Shield Specialization</strong>. O sétimo ponto está em Improved Revenge (2/3).</label>
     </div>
     <div class="task">
       <input type="checkbox" id="t2" onchange="updateProgress()">
-      <label for="t2"><span class="task-level">NOW</span> Priorizar <strong>First Aid</strong> — bandage é o heal mais barato. Upar até o máximo possível agora.</label>
+      <label for="t2"><span class="task-level">NOW</span> First Aid está em <strong>56/75</strong>. Treinar journeyman para o teto subir. Bandage continua sendo o heal entre pulls.</label>
     </div>
     <div class="task">
       <input type="checkbox" id="t3" onchange="updateProgress()">
@@ -233,8 +270,8 @@ footer {
       <label for="t4"><span class="task-level">NOW</span> Montar acampamento (Camping) sempre que possível. Colocar Sharpening Wheel (Str) + First Aid Kit (Stam).</label>
     </div>
     <div class="task">
-      <input type="checkbox" id="t5" onchange="updateProgress()">
-      <label for="t5"><span class="task-level">11-16</span> Usar arma 2H se o dano estiver baixo, mas preparar 1H + Shield bom para o nível 16.</label>
+      <input type="checkbox" id="t5" onchange="updateProgress()" checked>
+      <label for="t5"><span class="task-level">11-16</span> Feito no formato: Haggard's Hammer + Stormforged Protector. Falta dano na arma (7,6 dps).</label>
     </div>
     <div class="task">
       <input type="checkbox" id="t6" onchange="updateProgress()">
@@ -257,12 +294,12 @@ footer {
     <div class="tip">A partir do nível 16 com Shield Block, Protection é o spec mais eficiente para leveling solo no Forever.</div>
 
     <div class="task">
-      <input type="checkbox" id="t8" onchange="updateProgress()">
-      <label for="t8"><span class="task-level">10-16</span> 5/5 <strong>Shield Specialization</strong> (rage no block)</label>
+      <input type="checkbox" id="t8" onchange="updateProgress()" checked>
+      <label for="t8"><span class="task-level">10-16</span> 5/5 <strong>Shield Specialization</strong> — fechado. Cada block gera 5 de rage.</label>
     </div>
     <div class="task">
       <input type="checkbox" id="t9" onchange="updateProgress()">
-      <label for="t9"><span class="task-level">16+</span> 3/3 <strong>Improved Revenge</strong></label>
+      <label for="t9"><span class="task-level">16+</span> 3/3 <strong>Improved Revenge</strong> — já está 2/3. O próximo ponto fecha.</label>
     </div>
     <div class="task">
       <input type="checkbox" id="t10" onchange="updateProgress()">
